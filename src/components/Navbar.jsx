@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -18,16 +19,14 @@ export default function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
-
         {/* Logo */}
-<Link href="/" className="flex items-center space-x-2">
-  <img
-    src="/DigiHelic Logo.png"
-    alt="DigiHelic Logo"
-    className="h-10 w-auto"
-  />
-</Link>
-
+        <Link href="/" className="flex items-center space-x-2">
+          <img
+            src="/DigiHelic Logo.png"
+            alt="DigiHelic Logo"
+            className="h-10 w-auto"
+          />
+        </Link>
 
         {/* Navigation */}
         <ul className="flex gap-8 text-[16px] font-medium">
@@ -46,7 +45,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
       </div>
     </nav>
   );

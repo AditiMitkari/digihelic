@@ -4,13 +4,7 @@ import Link from "next/link";
 
 /* ================= Feature Card ================= */
 
-type FeatureCardProps = {
-  title: string;
-  desc: string;
-  bgImage?: string; // optional because some cards may not have it
-};
-
-const FeatureCard = ({ title, desc, bgImage }: FeatureCardProps) => {
+const FeatureCard = ({ title, desc, bgImage }) => {
   if (bgImage) {
     return (
       <div className="group relative h-96 rounded-xl overflow-hidden shadow-lg cursor-pointer">

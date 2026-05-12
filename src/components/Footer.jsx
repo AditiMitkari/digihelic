@@ -4,7 +4,9 @@ export default function Footer() {
       <div className="container py-8 grid md:grid-cols-3 gap-6">
         <div>
           <h3 className="text-xl font-semibold text-white">DigiHelic</h3>
-          <p className="mt-2 text-sm">Next-gen IT consulting & digital transformation.</p>
+          <p className="mt-2 text-sm">
+            Next-gen IT consulting & digital transformation.
+          </p>
         </div>
 
         <div>
@@ -25,7 +27,8 @@ export default function Footer() {
       </div>
 
       <div className="bg-slate-800 text-center py-4 text-xs">
-        © {new Date().getFullYear()} DigiHelic Solutions Pvt. Ltd. All rights reserved.
+        © {new Date().getFullYear()} DigiHelic Solutions Pvt. Ltd. All rights
+        reserved.
       </div>
     </footer>
   );
