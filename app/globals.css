@@ -3,28 +3,80 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --primary-dark: #061a3a;
+  --primary-blue: #005bbb;
+  --accent-blue: #13a8ff;
+  --text-dark: #0f172a;
+  --text-muted: #475569;
+  --bg-light: #f8fafc;
+  --white: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-manrope), "Inter", "Segoe UI", Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ✅ Keep light theme for website */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sora), var(--font-manrope), "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  color: var(--text-dark);
+  letter-spacing: -0.04em;
+  line-height: 1.16;
+}
+
+h1 {
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+p {
+  color: var(--text-muted);
+  font-family: var(--font-manrope), "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+}
 
 /* Arrow wrapper */
 .styled-wrapper {
@@ -36,40 +88,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 40px;
   height: 40px;
-
   font-size: 3rem;
   color: #f0eeef;
-
   position: relative;
   cursor: pointer;
 }
 
-/* ===== NEW BUFFERING RING ===== */
+/* ===== Buffering Ring ===== */
 .styled-wrapper .button-elem::before {
   content: "";
   position: absolute;
-
   top: 50%;
   left: 50%;
-
   width: 56px;
   height: 56px;
-
   border-radius: 50%;
   border: 4px solid transparent;
   border-top-color: #ff5733;
   border-right-color: #ff5733;
-
   transform: translate(-50%, -50%);
   opacity: 0;
-
   pointer-events: none;
 }
 
-/* ===== Hover: START BUFFERING ===== */
+/* ===== Hover: Start Buffering ===== */
 .styled-wrapper .button-elem:hover::before {
   opacity: 1;
   animation: spin-buffer 0.9s linear infinite;
@@ -80,7 +124,279 @@ body {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
   }
+
   to {
     transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+
+/* ================= DigiHelic Home Hero Section ================= */
+
+.hero-section {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #ffffff;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(2, 12, 28, 0.15) 0%,
+      rgba(2, 12, 28, 0.35) 35%,
+      rgba(2, 12, 28, 0.82) 62%,
+      rgba(2, 12, 28, 0.96) 100%
+    ),
+    url("/Images/Hero image.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Optional overlay glow */
+.hero-bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(19, 168, 255, 0.18), transparent 35%),
+    radial-gradient(circle at 35% 85%, rgba(0, 91, 187, 0.18), transparent 32%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-text {
+  max-width: 620px;
+  padding: 90px 0;
+  text-align: left;
+}
+
+.hero-kicker {
+  margin: 0 0 16px;
+  color: #77cfff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-text h1 {
+  margin: 0 0 22px;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.hero-text h1 span {
+  color: #23b3ff;
+}
+
+.hero-description {
+  max-width: 580px;
+  margin: 0 0 30px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.btn-primary,
+.btn-outline {
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: #1677ff;
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(22, 119, 255, 0.32);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-2px);
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-badges span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0d2d5a;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* ================= Service Icon Box Removed + Logo Size Increased ================= */
+
+.service-icon {
+  min-width: 76px;
+  height: 76px;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-icon-img {
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  display: block;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: 540px;
+    padding: 70px 0;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(2, 12, 28, 0.88) 0%,
+        rgba(2, 12, 28, 0.82) 100%
+      ),
+      url("/Images/Hero image.png");
+  }
+
+  .hero-content {
+    width: min(1180px, calc(100% - 40px));
+    justify-content: flex-start;
+  }
+
+  .hero-text {
+    max-width: 650px;
+    padding: 50px 0;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(34px, 6vw, 54px);
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 64px 0;
+  }
+
+  .hero-content {
+    width: min(100% - 32px, 720px);
+  }
+
+  .hero-text {
+    padding: 30px 0;
+  }
+
+  .hero-kicker {
+    font-size: 12px;
+    letter-spacing: 1.4px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(30px, 9vw, 42px);
+    line-height: 1.12;
+    letter-spacing: -1.2px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 54px 0;
+  }
+
+  .hero-content {
+    width: min(100% - 28px, 420px);
+  }
+
+  .hero-text h1 {
+    font-size: 30px;
+    line-height: 1.14;
+  }
+
+  .tech-badges span {
+    min-height: 32px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .service-icon {
+    min-width: 30px;
+    height: 30px;
+  }
+
+  .service-icon-img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  
 }
